@@ -1,0 +1,28 @@
+name: Deploy to Heroku
+
+on:
+  workflow_dispatch:
+
+jobs:
+  heroku-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Deploying WZML-X to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          # Aapka Heroku API Key aur Email
+          heroku_api_key: "HRKU-AAXPkNPCRWyg3m7G0bEI7acJC5-VKMTKy_UoAuuCFNyg_____wdNVijBLCHH"
+          heroku_email: "L.i.l.ymande.rs.on813@googlemail.com"
+          
+          # Naya App Name aur Team Name
+          heroku_app_name: "plexayubot-1"
+          heroku_team: "primeee"
+          
+          # Branch details
+          branch: "wzv3"
+          force: true
