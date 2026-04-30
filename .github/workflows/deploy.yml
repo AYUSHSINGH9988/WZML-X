@@ -1,0 +1,28 @@
+name: Deploy to Heroku
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "L.i.l.ymande.rs.on813@googlemail.com"
+          git config --global user.name "AyuPrime"
+
+      - name: Login and Push to Heroku
+        env:
+          HEROKU_API_KEY: "HRKU-AAXPkNPCRWyg3m7G0bEI7acJC5-VKMTKy_UoAuuCFNyg_____wdNVijBLCHH"
+        run: |
+          git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/plexayubot-1.git
+          git push heroku wzv3:master --force
